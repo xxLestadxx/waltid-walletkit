@@ -15,6 +15,18 @@ repositories {
     maven("https://maven.walt.id/repository/waltid/")
     maven("https://maven.walt.id/repository/waltid-ssi-kit/")
     maven("https://repo.danubetech.com/repository/maven-public/")
+    maven {
+        url = uri("https://maven.pkg.github.com/walt-id/waltid-nftkit")
+        val usernameFile = File("github_maven_username.txt")
+        val passwordFile = File("github_maven_password.txt")
+        val secretMavenUsername = System.getenv()["GITHUB_MAVEN_USERNAME"] ?: if (usernameFile.isFile) { usernameFile.readLines()[0] } else { "" }
+        val secretMavenPassword = System.getenv()["GITHUB_MAVEN_PASSWORD"] ?: if (passwordFile.isFile) { passwordFile.readLines()[0] } else { "" }
+
+        credentials {
+            username = secretMavenUsername
+            password = secretMavenPassword
+        }
+    }
     mavenLocal()
 }
 
@@ -29,6 +41,8 @@ dependencies {
     // SSIKIT
     implementation("id.walt:waltid-ssi-kit:1.9.0-SNAPSHOT")
     implementation("id.walt:waltid-ssikit-vclib:1.18.0")
+    // NFTKIT
+    implementation("id.walt:waltid-nftkit:1.0-SNAPSHOT")
 
     // Service-Matrix
     implementation("id.walt.servicematrix:WaltID-ServiceMatrix:1.1.0")

@@ -256,6 +256,13 @@ spec:
     - host: wallet.waltid.org
       http:
         paths:
+          - path: /v1/nft/
+            pathType: Prefix
+            backend:
+              service:
+                name: nftkit
+                port:
+                  number: 80
           - path: /api/
             pathType: Prefix
             backend:

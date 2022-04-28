@@ -25,3 +25,5 @@ docker/data_
 issuers-secret.json
 /secret_maven_password.txt
 /secret_maven_username.txt
+/github_maven_username.txt
+/github_maven_password.txt

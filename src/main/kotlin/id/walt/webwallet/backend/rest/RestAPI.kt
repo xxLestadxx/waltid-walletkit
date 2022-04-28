@@ -11,6 +11,7 @@ import id.walt.webwallet.backend.auth.AuthController
 import id.walt.webwallet.backend.auth.JWTService
 import id.walt.webwallet.backend.context.WalletContextManager
 import id.walt.webwallet.backend.wallet.DidWebRegistryController
+import id.walt.webwallet.backend.wallet.NFTController
 import id.walt.webwallet.backend.wallet.WalletController
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder
@@ -37,6 +38,7 @@ object RestAPI {
       AuthController.routes
       WalletController.routes
       DidWebRegistryController.routes
+      NFTController.routes
     }
     ApiBuilder.path("verifier-api") {
       VerifierController.routes
